@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Press+Start+2P&display=swap');
+
+:root {
+  /* Theme 1: Dark Neon (Default) */
+  --bg-color: #0a0a0a;
+  --text-color: #ffffff;
+  --accent-color: #00f0ff;
+  --secondary-accent: #ff003c;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --font-family: 'Outfit', sans-serif;
+}
+
+[data-theme="theme2"] {
+  /* Theme 2: Minimal Monochrome */
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #111111;
+  --secondary-accent: #666666;
+  --card-bg: rgba(0, 0, 0, 0.03);
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="theme3"] {
+  /* Theme 3: Cyberpunk */
+  --bg-color: #0f0f1b;
+  --text-color: #e0e0e0;
+  --accent-color: #ff00ff;
+  --secondary-accent: #00ffff;
+  --card-bg: rgba(255, 0, 255, 0.05);
+  --border-color: rgba(0, 255, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+a, button, [role="button"] {
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card-bg);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Base Layout Classes */
+.page-container {
+  min-height: 100vh;
+  padding: 6rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heading-primary {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   Glitch Text Effect
+   ============================================ */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text:hover {
+  animation: glitch 0.3s steps(2) infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text:hover::before {
+  animation: glitch-top 0.3s steps(2) infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  color: var(--accent-color);
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+.glitch-text:hover::after {
+  animation: glitch-bottom 0.3s steps(2) infinite;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  color: var(--secondary-accent);
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+@keyframes glitch {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-2px) skewX(-1deg); }
+  50%  { transform: translateX(2px); }
+  75%  { transform: translateX(-1px) skewX(1deg); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes glitch-top {
+  0%   { transform: translateX(-2px); }
+  50%  { transform: translateX(2px); }
+  100% { transform: translateX(-2px); }
+}
+
+@keyframes glitch-bottom {
+  0%   { transform: translateX(2px); }
+  50%  { transform: translateX(-2px); }
+  100% { transform: translateX(2px); }
+}
+
+/* ============================================
+   Konami Code Easter Egg Mode
+   ============================================ */
+body.konami,
+body.konami * {
+  font-family: 'Press Start 2P', monospace !important;
+  line-height: 2 !important;
+}
+
+body.konami .card {
+  border-radius: 0 !important;
+  border-width: 3px !important;
+  border-color: #00ff00 !important;
+  box-shadow: 4px 4px 0 #00ff00 !important;
+}
+
+body.konami h1, body.konami h2 {
+  text-shadow: 3px 3px 0 #00ff00 !important;
+}
+
+@keyframes konami-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
