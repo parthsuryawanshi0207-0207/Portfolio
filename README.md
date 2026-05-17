@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# Cinematic 3D Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly interactive, performance-driven 3D portfolio built with React, Three.js, and TypeScript. This project showcases a "cinematic" aesthetic with immersive WebGL environments, smooth scrolling, glitch effects, and advanced typography to create an award-winning user experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Immersive 3D Environments:** Powered by React Three Fiber (`@react-three/fiber`) and Drei (`@react-three/drei`).
+- **Smooth Scrolling:** Fluid scroll experiences enabled by Lenis (`@studio-freight/lenis`).
+- **Cinematic Animations:** High-performance UI animations built with Framer Motion (`framer-motion`).
+- **Advanced Post-Processing:** Bloom, glitch, and neon glow effects utilizing `@react-three/postprocessing`.
+- **Interactive Particle Systems:** Dynamic matrix rain and hacker text components.
+- **Fully Responsive & Typed:** Built ground-up with TypeScript and designed for both desktop and mobile layouts.
 
-## React Compiler
+## 🛠️ Technology Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **3D Graphics:** [Three.js](https://threejs.org/) + [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To run this project locally on your machine, follow these steps:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/parthsuryawanshi0207-0207/Portfolio.git
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd Portfolio
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Development Server
+
+Start the Vite development server:
+```bash
+npm run dev
 ```
+Open your browser and visit `http://localhost:5173` to view the portfolio.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Building for Production
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To create an optimized production build:
+```bash
+npm run build
 ```
+The compiled static files will be located in the `dist` directory, ready to be deployed.
+
+## 📄 License
+
+This project is open-source and available for educational purposes. Feel free to use components, but please personalize the content for your own portfolio.
